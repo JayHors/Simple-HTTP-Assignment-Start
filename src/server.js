@@ -1,0 +1,26 @@
+// dependencies
+const http = require('http');
+const htmlHandler = require('./htmlResponses.js');
+// const jsonHandler = require('./jsonResponses.js');
+// const textHandler = require('./textResponses.js');
+
+// port
+const port = process.env.PORT || process.env.NODE_PORT || 3500;
+
+function onRequest(request, response) {
+  switch (request.url) {
+    case '/': case '/index':
+      htmlHandler.getIndex(request, response);
+      break;
+    case '/page2':
+      htmlHandler.getPage2(request, response);
+      break;
+    default:
+      htmlHandler.getIndex(request, response);
+      break;
+  }
+}
+
+http.createServer(onRequest).listen(port, () => {
+  console.log(`Listening on localhost port ${port}`);
+});
