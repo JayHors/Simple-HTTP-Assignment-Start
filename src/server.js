@@ -1,7 +1,7 @@
 // dependencies
 const http = require('http');
 const htmlHandler = require('./htmlResponses.js');
-// const jsonHandler = require('./jsonResponses.js');
+const jsonHandler = require('./jsonResponses.js');
 const textHandler = require('./textResponses.js');
 
 // port
@@ -20,6 +20,12 @@ function onRequest(request, response) {
       break;
     case '/hello':
       textHandler.getHello(request, response);
+      break;
+    case '/timeJSON':
+      jsonHandler.getTimeJSON(request, response);
+      break;
+    case '/helloJSON':
+      jsonHandler.getHelloJSON(request, response);
       break;
     default:
       htmlHandler.getIndex(request, response);
