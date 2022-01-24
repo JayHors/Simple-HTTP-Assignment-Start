@@ -2,7 +2,7 @@
 const http = require('http');
 const htmlHandler = require('./htmlResponses.js');
 // const jsonHandler = require('./jsonResponses.js');
-// const textHandler = require('./textResponses.js');
+const textHandler = require('./textResponses.js');
 
 // port
 const port = process.env.PORT || process.env.NODE_PORT || 3500;
@@ -14,6 +14,12 @@ function onRequest(request, response) {
       break;
     case '/page2':
       htmlHandler.getPage2(request, response);
+      break;
+    case '/time':
+      textHandler.getTime(request, response);
+      break;
+    case '/hello':
+      textHandler.getHello(request, response);
       break;
     default:
       htmlHandler.getIndex(request, response);
